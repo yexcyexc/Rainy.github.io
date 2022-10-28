@@ -1,0 +1,119 @@
+.card {
+    width: 366px;
+    height: 215px;
+    box-shadow: 2px 2px 5px lightgrey;
+    /* 添加阴影 */
+    border-radius: 5px;
+}
+
+.card-bg {
+    width: 366px;
+    height: 86px;
+    background-image: url(/static/images/mountain.jpg);
+    background-size: cover;
+}
+
+/* .card-bg>img {
+    width: 100%;
+    height: 100%;
+} */
+
+.card-body {
+    width: 366px;
+    height: 129px;
+    box-sizing: border-box;
+    padding-top: 12px;
+}
+
+.card-body-photo {
+    width: 70px;
+    height: 100%;
+    float: left;
+    /* background-color: lightblue; */
+    text-align: center;
+    /* 头像居中 */
+}
+
+.card-body-photo>img {
+    width: 48px;
+    height: 48px;
+    border-radius: 24px;
+}
+
+.card-body-info {
+    width: calc(100% - 70px);
+    height: 100%;
+    float: left;
+    /* background-color: lightcoral; */
+}
+
+.card-body-info-user {
+    width: 100%;
+    height: 70%;
+}
+
+.card-body-info-user-name {
+    padding-left: 10px;
+    font-size: 16px;
+    color: #222222;
+    font-weight: bolder;
+}
+
+.card-body-info-user-name>span {
+    color: #8BD29B;
+    font-size: 12px;
+    font-style: italic;
+}
+
+.card-body-info-user-fans {
+    padding-top: 9px;
+}
+
+.card-body-info-user-fans-item {
+    margin-right: 20px;
+}
+
+.card-body-info-user-fans-item>span:nth-child(1) {
+    font-size: 12px;
+    color: #222222;
+    font-weight: 500;
+}
+
+.card-body-info-user-fans-item>span:nth-child(2) {
+    font-size: 12px;
+    color: #9499A0;
+}
+
+.card-body-info-follow>button {
+    width: 102px;
+    height: 30px;
+    border: none;
+    /* 去除边框 */
+    border-radius: 3px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.card-body-info-follow>button:nth-child(1) {
+    background-color: #00B5E5;
+    color: white;
+}
+
+.card-body-info-follow>button:nth-child(1):hover {
+    background-color: #00A1D6;
+    transition: 800ms;
+}
+
+.card-body-info-follow>button:nth-child(2) {
+    background-color: white;
+    border: #CCD0D7 solid 1px;
+    /* 单独设置边框 */
+    color: #6D757A;
+}
+
+.card-body-info-follow>button:nth-child(2):hover {
+    border-color: #00B5E5;
+    color: #00B5E5;
+    transition: 800ms;
+}
+
