@@ -1,183 +1,106 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <title>FredTools IDE</title>
-    <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
-    <script src="https://cdn.staticfile.org/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
-    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script>
-      function runcode(code,type)
-      {
-        if(type == "python")
-        {
-          console.log(code);
-          var xmlhttp;
-          if (window.XMLHttpRequest)
-          {
-            //  IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
-            xmlhttp=new XMLHttpRequest();
-          }
-          else
-          {
-            // IE6, IE5 浏览器执行代码
-            xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-          }
-          xmlhttp.open("GET","http://ide.ft2.club/api/python.php?code=" + escape(code),false);
-          xmlhttp.send();
-          var data = xmlhttp.responseText;
-          $("#output").html("<pre class=\"fillall\">" + data.replace(/</g,"<").replace(/>/g,">").replace(/\n/g,"<br>") + "</pre>");
-        }
-        if(type=="html")
-        {
-          $("#output").html('<iframe style="width=100%;height=100%;" id="iframe" class="fillall" src="http://ide.ft2.club/api/mirror.php?code=' + escape(editor.getValue()) + '"></iframe>');
-        }
-        if(type == "php")
-        {
-          console.log(code);
-          var xmlhttp;
-          if (window.XMLHttpRequest)
-          {
-            //  IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
-            xmlhttp=new XMLHttpRequest();
-          }
-          else
-          {
-            // IE6, IE5 浏览器执行代码
-            xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-          }
-          xmlhttp.open("GET","http://ide.ft2.club/api/php.php?code=" + escape(code),false);
-          xmlhttp.send();
-          var data = xmlhttp.responseText;
-          $("#output").html("<pre class=\"fillall\">" + data.replace(/</g,"<").replace(/>/g,">").replace(/\n/g,"<br>") + "</pre>");
-        }
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>动漫投票</title>
+</head>
 
-      }
-    </script>
-    <style type="text/css" media="screen">
-      #editor {
-        margin: 0;
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-      }
-      .container {
-        margin: 0;
-        //position: absolute;
-        top: 0;
-        bottom: 0;
-      }
-      #editordiv {
-        margin: 0;
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left:0;
-        right:58.33333333333334%;
-      }
-      #iframediv {
-        margin: 0;
-        position: absolute;
-        top: 0;
-        bottom: 50%;
-        left: 41.66666666666667%;
-        right:16.66666666666667%;
-      }
-      #stepdiv {
-        margin: 0;
-        position: absolute;
-        top: 50%;
-        bottom: 0;
-        left: 41.66666666666667%;
-        right:16.66666666666667%;
-      }
-      .col-md-2 {
-        margin: 0;
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 83.33333333333334%;
-        right:0;
-      }
-    </style>
-  </head>
-  <body>
+<body style="background-image:url(body.jpeg); background-size:100%; background-repeat: no-repeat;">
+ 
+ <body>
+	<div align="center"><img src="head2.jpg" /></div>
+	<div  align="center">
+	<h4>热门动漫投票</h4>
+		<table id="main" >
+			<tr >
+				<td>
+					<input type="radio" name="option" checked="checked"/>猫和老鼠
+				</td>
+			</tr>
+			<tr>
+				<td style="width:550px">
+					<div id=0 style="background-color:#acd6ff; width:0; height:20px; border-width:0px;">
+					</div>
+				</td>
+				<td>
+					<label id="label0">0</label>票
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<input type="radio" name="option"  />海贼王
+				</td>
+			</tr>
+			<tr >
+				<td>
+					<div id=1 style="background-color:#0066cc; height:20px; width:0; border-width:0px; border-color:blue; border-style:solid ; text-align:right;" ></div>
+					
+				</td>
+				<td>
+				<label id="label1">0</label>票
+				</td>
+			</tr>	
+			<tr >
+				<td>
+					<input type="radio" name="option"  />喜羊羊
+				</td>
+			</tr>
+			<tr >
+				<td>
+					<div id=2 style="background-color:#ff7575; height:20px;width:0;  border-width:0px; border-color:blue; border-style:solid ; text-align:right;" ></div>
+					
+				</td>
+				<td>
+				<label id="label2">0</label>票
+				</td>
+			</tr>	
+			<tr>
+				<td>
+					<input type="radio" name="option" />其他
+				</td>
+			</tr>
+			<tr >
+				<td>
+					<div id=3 style="background-color:#5cadad;height:20px;width:0; border-width:0px; border-color:blue; border-style:solid ; text-align:right;" ></div>
+					
+				</td>
+				<td>
+				<label id="label3">0</label>票
+				</td>
+			</tr>
+		
+			<tr>
+				<td><p>
+					<input type="submit" value="确认投票" onclick="vote()"/>		
+				</td>
+			</tr>
+		</table>
+	</div>
+</body>
+<script type="text/javascript">
 
-    <div class="container">
-      <div class="col-md-5 column" id="editordiv">
-        <pre id="editor"></pre>
-      </div>
-      <div class="col-md-5 column" id="iframediv">
-        <h3>运行结果：</h3>
-        <div id="output"></div>
-      </div>
-      <div class="col-md-5 column" id="stepdiv">
-        <h3 id="stepcount">自由模式</h3>
-        <p id="steptext">在此模式下，你可以自由的使用FredTools IDE。</p>
-        <p id="task">任务：无</p>
-      </div>
-      <div class="col-md-2 column">
-        <!-- 更改语言-start -->
-        <div class="form-group">
-          <select name="language" id="language" class="form-control">
-            <option value="python" selected>Python（.py）</option>
-          </select>
+	//在每个投票选项后面写了个div，用div的宽度来代表当前该选项的投票数。
+	function vote(){	//函数vote，当点击确认投票的时候，调用vote方法
+		
+		//for循环的条件是，所有投票选项的个数。
+		for(var i = 0; i < document.getElementsByName("option").length; i++){
+			
+			//查找到是哪个投票选项被选中
+			if(document.getElementsByName("option")[i].checked == true){
+				var width = document.getElementById(i).style.width;	//获取到当前选项的宽度。
+				width = parseInt(width);//将宽度转化为int型，因为获取到的width的单位是px
+				width += 3;//改变width的值，这里就是定义每次投票的进度条的增速
+				document.getElementById(i).style.width = width+"px";//修改原div的宽度
+				
+				var label = "label"+i;//lable标签里面写的是当前的投票数目。
+				var num = document.getElementById(label).innerText;//获取到当前的票数
+				document.getElementById(label).innerText = ++num;//票数加1，并修改原值
+			}
+		}
 
-          <button id="changelang" class="btn btn-default">
-            更改语言
-          </button>
-        </div>
-        <!-- 更改语言-end -->
-        <br>
-        <!-- 更改皮肤-end -->
-        <div class="form-group">
-          <select name="skin" id="skin" class="form-control">
-            <?php require "../skin.html"; ?>
-          </select>
-          <button id="changeskin" class="btn btn-default">
-            更改皮肤
-          </button>
-        </div>
-        <!-- 更改语言-end -->
-        <button class="btn btn-default" id="cheak">
-          <span class="glyphicon glyphicon-play-circle"></span>运行代码
-        </button>
-        <br><br>
-        <div class="form-group">
-          <input type="text" id="filename" placeholder="请输入此文件文件名......" class="form-control">
-          <button class="btn btn-default" id="savecode">
-            <span class="glyphicon glyphicon-save"></span>保存代码（通过Cookie）
-          </button>
-          <button class="btn btn-default" id="readcode">
-            <span class="glyphicon glyphicon-open"></span>读入代码（通过Cookie）
-          </button>
-        </div>
-      </div>
-    </div>
-    <script src="src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
-    <script>
-      var editor = ace.edit("editor");
-      editor.setOptions({enableLiveAutocompletion: true});
-      editor.setTheme("ace/theme/Chrome");
-      editor.session.setMode("ace/mode/python");
-      $("#changelang").click(function(){
-        editor.session.setMode("ace/mode/" + $("#language").val());
-      });
-      $("#changeskin").click(function(){
-        editor.setTheme("ace/theme/" + $("#skin").val());
-      });
-      $("#cheak").click(function(){
-        var result = runcode(editor.getValue(), $("#language").val());
-      });
-      $("#savecode").click(function(){
-        $.cookie("File-" + $("#filename").val(), editor.getValue());
-      });
-      $("#readcode").click(function(){
-        editor.setValue($.cookie("File-" + $("#filename").val()));
-      });
-    </script>
-  </body>
+		//alert("投票成功");
+		
+	}
+
+</script>
 </html>
